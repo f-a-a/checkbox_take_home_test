@@ -1,7 +1,3 @@
-resource "aws_secretsmanager_secret" "repository_ssh_key" {
-  name = "github-ssh-key"
-}
-
 module "eks_blueprints" {
   source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.9.0"
 

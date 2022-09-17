@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: db-redis
+
+resources:
+  - secrets.yaml
+
+helmCharts:
+  - repo: https://charts.bitnami.com/bitnami
+    name: redis
+    releaseName: db-redis
+    namespace: db-redis
+    valuesInline:
+      sentinel:
+        enabled: true
+        masterSet: db-redis
+        persistence:
+          enabled: true
+      auth:
+        existingSecret: db-redis-secret
+        existingSecretPasswordKey: db-redis-password
