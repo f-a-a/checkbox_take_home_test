@@ -12,11 +12,14 @@ helmCharts:
     releaseName: db-redis
     namespace: db-redis
     valuesInline:
+      master:
+        persistence:
+          enabled: false
       sentinel:
         enabled: true
         masterSet: db-redis
         persistence:
-          enabled: true
+          enabled: false
       auth:
         existingSecret: db-redis-secret
         existingSecretPasswordKey: db-redis-password
