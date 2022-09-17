@@ -1,0 +1,17 @@
+redis-ha:
+  enabled: true
+
+controller:
+  enableStatefulSet: true
+
+server:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+  config:
+    kustomize.buildOptions: --enable-helm
+
+repoServer:
+  autoscaling:
+    enabled: true
+    minReplicas: 2

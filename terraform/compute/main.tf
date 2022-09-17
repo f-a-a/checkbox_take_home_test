@@ -70,6 +70,9 @@ module "eks_blueprints_kubernetes_addons" {
   enable_secrets_store_csi_driver_provider_aws = true
 
   enable_argocd = true
+  argocd_helm_config = {
+    values = [templatefile("${path.module}/argocd-values.yaml", {})]
+  }
   argocd_applications = {
     platform = {
       path                = "kustomize/platform"

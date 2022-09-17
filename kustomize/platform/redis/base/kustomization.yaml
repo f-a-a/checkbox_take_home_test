@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: db-redis
 
 resources:
+  - namespace.yaml
   - secrets.yaml
 
 helmCharts:
