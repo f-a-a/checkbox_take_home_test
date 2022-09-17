@@ -77,13 +77,13 @@ module "eks_blueprints_kubernetes_addons" {
   argocd_applications = {
     platform = {
       path                = "kustomize/platform"
-      repo_url            = "git@github.com:f-a-a/checkbox_assessment.git"
+      repo_url            = "ssh://git@github.com/f-a-a/checkbox_assessment.git"
       type                = "kustomize"
       ssh_key_secret_name = aws_secretsmanager_secret.repository_ssh_key.name
     }
     apps = {
       path                = "kustomize/apps"
-      repo_url            = "git@github.com:f-a-a/checkbox_assessment.git"
+      repo_url            = "ssh://git@github.com/f-a-a/checkbox_assessment.git"
       type                = "kustomize"
       ssh_key_secret_name = aws_secretsmanager_secret.repository_ssh_key.name
     }
