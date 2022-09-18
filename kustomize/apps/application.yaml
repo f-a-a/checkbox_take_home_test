@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: db-redis-base
-  namespace: db-redis
+  name: app-shopping-cart-base
+  namespace: app-shopping-cart
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: db-redis
+    namespace: app-shopping-cart-base
     name: in-cluster
   project: default
   source:
-    path: kustomize/platform/redis/base
+    path: kustomize/apps/shopping-cart/base
     repoURL: ssh://git@github.com/f-a-a/checkbox_assessment.git
     targetRevision: HEAD
     plugin:
