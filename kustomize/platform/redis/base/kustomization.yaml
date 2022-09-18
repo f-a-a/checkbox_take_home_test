@@ -4,7 +4,7 @@ namespace: db-redis
 
 resources:
   - namespace.yaml
-  - secrets-provider.yaml
+  - secrets.yaml
 
 helmCharts:
   - repo: https://charts.bitnami.com/bitnami
@@ -22,18 +22,3 @@ helmCharts:
         enabled: true
         existingSecret: db-redis-secret
         existingSecretPasswordKey: db-redis-password
-
-patches:
-  - path: secrets-provider-volume-inject.yaml
-    target:
-      kind: StatefulSet
-  - patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/volumeMounts/-
-        value:
-          mountPath: /mnt/secrets-store
-          name: secrets-store-inline
-          readOnly: true
-    target:
-      kind: StatefulSet
-

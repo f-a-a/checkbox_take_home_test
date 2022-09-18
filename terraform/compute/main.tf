@@ -40,12 +40,6 @@ module "eks_blueprints_kubernetes_addons" {
   enable_amazon_eks_coredns    = true
   enable_amazon_eks_kube_proxy = true
 
-  enable_secrets_store_csi_driver = true
-  secrets_store_csi_driver_helm_config = {
-    values = [templatefile("${path.module}/values/secrets-store-csi-driver.yaml", {})]
-  }
-  enable_secrets_store_csi_driver_provider_aws = true
-
   enable_argocd = true
   argocd_helm_config = {
     values = [templatefile("${path.module}/values/argocd.yaml", {})]

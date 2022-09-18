@@ -14,4 +14,5 @@ spec:
     path: kustomize/platform/redis/base
     repoURL: ssh://git@github.com/f-a-a/checkbox_assessment.git
     targetRevision: HEAD
----
+    plugin:
+      name: argocd-vault-plugin
