@@ -15,6 +15,9 @@ helmCharts:
       master:
         persistence:
           enabled: false
+      replica:
+        persistence:
+          enabled: false
       auth:
         existingSecret: db-redis-secret
         existingSecretPasswordKey: db-redis-password

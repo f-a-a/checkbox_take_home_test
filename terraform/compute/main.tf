@@ -66,12 +66,15 @@ module "eks_blueprints_kubernetes_addons" {
     kubernetes_version = module.eks_blueprints.eks_cluster_version
   }
 
-  enable_secrets_store_csi_driver              = true
+  enable_secrets_store_csi_driver = true
+  secrets_store_csi_driver_helm_config = {
+    values = [templatefile("${path.module}/values/secrets-store-csi-driver.yaml", {})]
+  }
   enable_secrets_store_csi_driver_provider_aws = true
 
   enable_argocd = true
   argocd_helm_config = {
-    values = [templatefile("${path.module}/argocd-values.yaml", {})]
+    values = [templatefile("${path.module}/values/argocd.yaml", {})]
   }
   argocd_applications = {
     platform = {
