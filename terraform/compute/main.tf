@@ -7,44 +7,23 @@ module "eks_blueprints" {
   vpc_id             = var.vpc_id
   private_subnet_ids = var.private_subnet_ids
 
-  fargate_profiles = {
+  managed_node_groups = {
     platform = {
-      fargate_profile_name = "platform"
-      fargate_profile_namespaces = [
-        {
-          namespace = "kube-system"
-        },
-        {
-          namespace = "secrets-store-csi-driver"
-        },
-        {
-          namespace = "csi-secrets-store-provider-aws"
-        },
-        {
-          namespace = "argocd"
-        }
-      ]
-      subnet_ids = var.platform_subnet_ids
+      node_group_name = "platform"
+      instance_types  = ["m5.large"]
+      subnet_ids      = var.platform_subnet_ids
     }
 
     databases = {
-      fargate_profile_name = "dbs"
-      fargate_profile_namespaces = [
-        {
-          namespace = "db-redis"
-        }
-      ]
-      subnet_ids = var.database_subnet_ids
+      node_group_name = "dbs"
+      instance_types  = ["m5.large"]
+      subnet_ids      = var.database_subnet_ids
     }
 
     apps = {
-      fargate_profile_name = "apps"
-      fargate_profile_namespaces = [
-        {
-          namespace = "app-shopping-cart"
-        }
-      ]
-      subnet_ids = var.application_subnet_ids
+      node_group_name = "apps"
+      instance_types  = ["m5.large"]
+      subnet_ids      = var.application_subnet_ids
     }
   }
 }
@@ -57,15 +36,9 @@ module "eks_blueprints_kubernetes_addons" {
   eks_oidc_provider    = module.eks_blueprints.oidc_provider
   eks_cluster_version  = module.eks_blueprints.eks_cluster_version
 
-  enable_amazon_eks_vpc_cni            = true
-  enable_amazon_eks_kube_proxy         = true
-  enable_amazon_eks_aws_ebs_csi_driver = true
-
-  enable_self_managed_coredns = true
-  self_managed_coredns_helm_config = {
-    compute_type       = "fargate"
-    kubernetes_version = module.eks_blueprints.eks_cluster_version
-  }
+  enable_amazon_eks_vpc_cni    = true
+  enable_amazon_eks_coredns    = true
+  enable_amazon_eks_kube_proxy = true
 
   enable_secrets_store_csi_driver = true
   secrets_store_csi_driver_helm_config = {
@@ -93,7 +66,6 @@ module "eks_blueprints_kubernetes_addons" {
   }
 
   depends_on = [
-    null_resource.modify_kube_dns,
     aws_secretsmanager_secret.repository_ssh_key,
     aws_secretsmanager_secret_version.repository_ssh_key_secret_string
   ]
