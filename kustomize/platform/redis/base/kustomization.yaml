@@ -12,7 +12,8 @@ helmCharts:
     releaseName: db-redis
     namespace: db-redis
     valuesInline:
-      storageClass: gp2
+      global:
+        storageClass: gp2
       master:
         persistence:
           enabled: false
