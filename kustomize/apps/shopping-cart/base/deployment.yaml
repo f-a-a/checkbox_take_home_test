@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-cart
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shoppoing-cart
+  template:
+    metadata:
+      labels:
+        app: shopping-cart
+    spec:
+      containers:
+      - name: shopping-cart
+        image: shopping-cart
+        ports:
+          - containerPort: 80
+        env:
+          - name: REDIS_HOST
+            value: db-redis-master.db-redis.cluster.local
+          - name: REDIS_READ_PORT
+            value: 6379
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-redis-secret
+                key: db-redis-password
