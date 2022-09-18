@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: app-shopping-cart
 
 resources:
+  - namespace.yaml
   - deployment.yaml
   - secrets.yaml
