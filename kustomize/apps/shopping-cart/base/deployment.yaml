@@ -15,8 +15,7 @@ spec:
       containers:
       - name: shopping-cart
         image: nicolaka/netshoot
-        command:
-          - ["tail", "-f", "/dev/null"]
+        command: ["tail", "-f", "/dev/null"]
         ports:
           - containerPort: 80
         env:
