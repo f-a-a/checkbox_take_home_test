@@ -4,22 +4,17 @@ namespace: db-redis
 
 resources:
   - namespace.yaml
-  # - secrets.yaml
+  - secrets.yaml
 
-# helmCharts:
-#   - repo: https://charts.bitnami.com/bitnami
-#     name: redis
-#     releaseName: db-redis
-#     namespace: db-redis
-#     valuesInline:
-#       master:
-#         persistence:
-#           enabled: false
-#       sentinel:
-#         enabled: true
-#         masterSet: db-redis
-#         persistence:
-#           enabled: false
-#       auth:
-#         existingSecret: db-redis-secret
-#         existingSecretPasswordKey: db-redis-password
+helmCharts:
+  - repo: https://charts.bitnami.com/bitnami
+    name: redis
+    releaseName: db-redis
+    namespace: db-redis
+    valuesInline:
+      master:
+        persistence:
+          enabled: false
+      auth:
+        existingSecret: db-redis-secret
+        existingSecretPasswordKey: db-redis-password
