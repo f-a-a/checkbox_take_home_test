@@ -15,4 +15,4 @@ spec:
     repoURL: ssh://git@github.com/f-a-a/checkbox_assessment.git
     targetRevision: HEAD
     plugin:
-      name: argocd-vault-plugin
+      name: argocd-vault-plugin-kustomize

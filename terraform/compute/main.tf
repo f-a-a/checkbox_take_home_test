@@ -12,6 +12,9 @@ module "eks_blueprints" {
       node_group_name = "platform"
       instance_types  = ["m5.large"]
       subnet_ids      = var.platform_subnet_ids
+      additional_iam_policies = [
+        "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
+      ]
     }
 
     databases = {

@@ -11,10 +11,6 @@ server:
   config:
     kustomize.buildOptions: --enable-helm
     configManagementPlugins: |
-      - name: argocd-vault-plugin
-        generate:
-          command: ["argocd-vault-plugin"]
-          args: ["generate", "./"]
       - name: argocd-vault-plugin-kustomize
         generate:
           command: ["sh", "-c"]
