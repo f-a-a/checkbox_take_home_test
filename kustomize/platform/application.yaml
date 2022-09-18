@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: db-redis-dev
+  namespace: db-redis
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: db-redis
+    name: in-cluster
+  project: default
+  source:
+    path: kustomize/platform/redis/base
+    repoURL: ssh://git@github.com/f-a-a/checkbox_assessment.git
+    targetRevision: HEAD
+---
