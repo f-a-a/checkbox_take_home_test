@@ -12,14 +12,12 @@ helmCharts:
     releaseName: db-redis
     namespace: db-redis
     valuesInline:
-      global:
-        storageClass: gp2
       master:
         persistence:
-          enabled: true
+          enabled: false
       replica:
         persistence:
-          enabled: true
+          enabled: false
       auth:
         enabled: true
         existingSecret: db-redis-secret
