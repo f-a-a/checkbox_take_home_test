@@ -90,6 +90,7 @@ module "eks_blueprints_kubernetes_addons" {
 
   depends_on = [
     null_resource.modify_kube_dns,
-    aws_secretsmanager_secret.repository_ssh_key
+    aws_secretsmanager_secret.repository_ssh_key,
+    aws_secretsmanager_secret_version.repository_ssh_key_secret_string
   ]
 }

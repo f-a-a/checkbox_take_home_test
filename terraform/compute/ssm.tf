@@ -9,11 +9,13 @@ resource "random_password" "db_redis_password" {
 }
 
 resource "aws_secretsmanager_secret" "repository_ssh_key" {
-  name = "github-ssh-key"
+  name                    = "github-ssh-key-v1"
+  recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret" "db_redis_password" {
-  name = "db-redis-password"
+  name                    = "db-redis-password-v1"
+  recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret_version" "repository_ssh_key_secret_string" {
