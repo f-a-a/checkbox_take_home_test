@@ -16,10 +16,10 @@ helmCharts:
         storageClass: gp2
       master:
         persistence:
-          enabled: false
+          enabled: true
       replica:
         persistence:
-          enabled: false
+          enabled: true
       auth:
         enabled: true
         existingSecret: db-redis-secret
