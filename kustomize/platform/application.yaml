@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: db-redis-dev
+  name: db-redis-base
   namespace: db-redis
   finalizers:
   - resources-finalizer.argocd.argoproj.io
