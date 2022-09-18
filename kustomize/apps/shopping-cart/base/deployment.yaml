@@ -21,7 +21,7 @@ spec:
           - name: REDIS_HOST
             value: db-redis-master.db-redis.cluster.local
           - name: REDIS_READ_PORT
-            value: 6379
+            value: "6379"
           - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:
