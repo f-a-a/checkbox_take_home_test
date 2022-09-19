@@ -4,7 +4,7 @@ metadata:
   name: db-redis-base
   namespace: db-redis
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: db-redis
@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: kustomize/platform/redis/base
-    repoURL: ssh://git@github.com/f-a-a/checkbox_assessment.git
+    repoURL: ssh://git@github.com/f-a-a/checkbox_take_home_test.git
     targetRevision: HEAD
     plugin:
       name: argocd-vault-plugin-kustomize
