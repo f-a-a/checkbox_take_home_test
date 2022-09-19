@@ -134,3 +134,8 @@ and has good support around self-maintenance, I would opt to self-host where cos
 minimized. However, in situation where the service in consideration is unique and require esoteric
 expertise with minimal support for self-maintenance, I would lean to opting for the managed service
 solution.
+
+## Git log
+
+Git logs are not used diligently here to track code changes, they're mostly experimention commits.
+Given an actual project, I will be sure to follow git best practices.
