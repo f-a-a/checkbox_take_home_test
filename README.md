@@ -53,3 +53,14 @@ on the flipside, the `shopping-cart` installation in `apps` defines the standard
 application deployment that defines the container image, listening port and environment variables
 to be injected into the container. The development team may continue to follow the 12-factor app
 principles and be able to consume the environment variables in their application.
+
+## Installation
+
+```
+cd terraform
+terraform plan && terraform apply
+```
+
+```
+terraform output github_public_ssh_key -> add to github
+```

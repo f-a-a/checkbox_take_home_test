@@ -12,6 +12,8 @@ spec:
       labels:
         app: shopping-cart
     spec:
+      nodeSelector:
+        checkbox.ai/node-selection: apps
       containers:
       - name: shopping-cart
         image: nicolaka/netshoot
