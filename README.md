@@ -139,3 +139,7 @@ solution.
 
 Git logs are not used diligently here to track code changes, they're mostly experimention commits.
 Given an actual project, I will be sure to follow git best practices.
+
+There are still various aspects of configuration that needs to be done, e.g. Load Balancer/Ingress,
+Observability, Backup, Storage, Scaling strategy, etc that are not convered in this example.
+Hopefully these examples thus far suffices for your consideration. Thank you for reading!
