@@ -3,7 +3,7 @@
 ## Overview
 
 This repository contains two main directories, terraform and kustomize. The `terraform` directory
-[houses](houses) infrastructure definitions (e.g. vpc, iam, secretsmanager) while the `kustomize` directory
+houses infrastructure definitions (e.g. vpc, iam, secretsmanager) while the `kustomize` directory
 houses Kubernetes related resources that is managed by ArgoCD.
 
 ## Architecture
@@ -135,7 +135,7 @@ minimized. However, in situation where the service in consideration is unique an
 expertise with minimal support for self-maintenance, I would lean to opting for the managed service
 solution.
 
-## Git log
+## Caveat
 
 Git logs are not used diligently here to track code changes, they're mostly experimention commits.
 Given an actual project, I will be sure to follow git best practices.
