@@ -15,18 +15,30 @@ module "eks_blueprints" {
       additional_iam_policies = [
         "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
       ]
+
+      k8s_labels = {
+        "checkbox.ai/node-selection" = "platform"
+      }
     }
 
     databases = {
       node_group_name = "dbs"
       instance_types  = ["m5.large"]
       subnet_ids      = var.database_subnet_ids
+
+      k8s_labels = {
+        "checkbox.ai/node-selection" = "dbs"
+      }
     }
 
     apps = {
       node_group_name = "apps"
       instance_types  = ["m5.large"]
       subnet_ids      = var.application_subnet_ids
+
+      k8s_labels = {
+        "checkbox.ai/node-selection" = "apps"
+      }
     }
   }
 }

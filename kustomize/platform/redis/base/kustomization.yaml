@@ -15,9 +15,15 @@ helmCharts:
       master:
         persistence:
           enabled: false
+        podAntiAffinityPreset: hard
+        nodeSelector:
+          checkbox.ai/node-selection: dbs
       replica:
         persistence:
           enabled: false
+        podAntiAffinityPreset: hard
+        nodeSelector:
+          checkbox.ai/node-selection: dbs
       auth:
         enabled: true
         existingSecret: db-redis-secret
