@@ -1,0 +1,5 @@
+terraform 1.2.9
+awscli 2.7.32
+kubectl 1.25.1
+kustomize 4.5.7
+helm 3.9.4

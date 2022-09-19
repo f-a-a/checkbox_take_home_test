@@ -23,7 +23,7 @@ spec:
         env:
           - name: REDIS_HOST
             value: db-redis-master.db-redis.svc.cluster.local
-          - name: REDIS_READ_PORT
+          - name: REDIS_PORT
             value: "6379"
           - name: REDIS_PASSWORD
             valueFrom:
