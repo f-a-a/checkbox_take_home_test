@@ -8,7 +8,7 @@ houses Kubernetes related resources that is managed by ArgoCD.
 
 ## Architecture
 
-![image](https://user-images.githubusercontent.com/19421765/190936458-2e34a229-b252-4637-acc0-e22f4316213e.png)
+![image](https://user-images.githubusercontent.com/19421765/190945404-d557a4be-ee39-40e1-99b3-dc2a12a7c777.png)
 
 ### Network
 
@@ -64,3 +64,19 @@ terraform plan && terraform apply
 ```
 terraform output github_public_ssh_key -> add to github
 ```
+
+```
+aws eks update-kubeconfig --name app-cluster --region ap-southeast-1
+kubectl port-forward svc/argo-cd-argocd-server 8080:80 -n argocd
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+
+```
+visit http://localhost:8080/
+login with username: admin, password: <value from above>
+```
+
+applications from repository should appear:
+
+![image](https://user-images.githubusercontent.com/19421765/190945325-0aca4fb2-6c7d-42e9-b027-8cb1718be31b.png)
+
