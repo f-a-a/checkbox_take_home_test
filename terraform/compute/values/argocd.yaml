@@ -1,10 +1,27 @@
 redis-ha:
   enabled: true
+  topologySpreadConstraints:
+    topologyKey: checkbox.ai/node-selection
+    whenUnsatisfiable: DoNotSchedule
+    matchLabelKeys:
+      - platform
 
 controller:
   enableStatefulSet: true
+  nodeSelector:
+    checkbox.ai/node-selection: platform
+
+dex:
+  nodeSelector:
+    checkbox.ai/node-selection: platform
+
+redis:
+  nodeSelector:
+    checkbox.ai/node-selection: platform
 
 server:
+  nodeSelector:
+    checkbox.ai/node-selection: platform
   autoscaling:
     enabled: true
     minReplicas: 2
@@ -17,6 +34,8 @@ server:
           args: ["kustomize build --enable-helm . | argocd-vault-plugin generate -"]
 
 repoServer:
+  nodeSelector:
+    checkbox.ai/node-selection: platform
   autoscaling:
     enabled: true
     minReplicas: 2
@@ -48,3 +67,11 @@ repoServer:
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
+
+applicationSet:
+  nodeSelector:
+    checkbox.ai/node-selection: platform
+
+notifications:
+  nodeSelector:
+    checkbox.ai/node-selection: platform

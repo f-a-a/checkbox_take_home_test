@@ -25,6 +25,9 @@ module "eks_blueprints" {
       node_group_name = "dbs"
       instance_types  = ["m5.large"]
       subnet_ids      = var.database_subnet_ids
+      additional_iam_policies = [
+        "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
+      ]
 
       k8s_labels = {
         "checkbox.ai/node-selection" = "dbs"
@@ -35,6 +38,9 @@ module "eks_blueprints" {
       node_group_name = "apps"
       instance_types  = ["m5.large"]
       subnet_ids      = var.application_subnet_ids
+      additional_iam_policies = [
+        "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
+      ]
 
       k8s_labels = {
         "checkbox.ai/node-selection" = "apps"
